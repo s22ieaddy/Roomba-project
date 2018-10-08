@@ -57,7 +57,12 @@ task main()
  		if(mode == WallFollowing)
  		{
 
-	 		while(SensorValue(button2) ==0)
+
+			 wfcount = wfcount + 1;
+
+
+
+	while(SensorValue(button2) ==0)
 			{
 				motor[left] = 50;
 				motor[right] = 50;
@@ -66,10 +71,7 @@ task main()
 
 			motor[left] = -50;
 			motor[right] = -50;
-			wait1Msec(2000);
-
-			 wfcount = wfcount + 1;
-
+			wait1Msec(1500);
 
 			motor[left] = 0;
 			motor[right] = 75;
@@ -79,14 +81,28 @@ task main()
 			{
 				motor[left] = 100;
 				motor[right] = 40;
+			}
+
 
 				if (wfcount == 5)
 				{
+					motor[left] = -50;
+					motor[right] = -50;
+					wait1Msec(1000);
+
+					motor[left] = 50;
+					motor[right] = 0;
+					wait1Msec(1500);
 					mode = straight;
+				}
+
+
+
+
+
 				}
 			}
 
-		}
+
 
 	}
-}
