@@ -46,6 +46,14 @@ task main()
 			motor[left] = 50;
 			motor[right] = 50;
 
+
+				if (time1(T1) > 5000)
+				{
+					speedright = 50;
+					speedleft = 0;
+					mode = spiral;
+				}
+
 			while(SensorValue(button2) ==1)
 			{
 
@@ -93,8 +101,12 @@ task main()
 					motor[left] = 50;
 					motor[right] = 0;
 					wait1Msec(1500);
+
+					clearTimer(T1);
+
 					mode = straight;
 				}
+
 
 
 
