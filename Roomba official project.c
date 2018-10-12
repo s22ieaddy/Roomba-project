@@ -30,10 +30,17 @@ task main()
 
 			if(speedleft == 100)
 			{
+				  clearTimer(T1);
 					mode = straight;
 
 			}
 
+
+			if(SensorValue(button2) ==1)
+			{
+				mode = WallFollowing;
+
+			}
 
 
 
@@ -47,14 +54,14 @@ task main()
 			motor[right] = 50;
 
 
-				if (time1(T1) > 5000)
+				if (time1(T1) > 8000)
 				{
 					speedright = 50;
 					speedleft = 0;
 					mode = spiral;
 				}
 
-			while(SensorValue(button2) ==1)
+			if(SensorValue(button2) ==1)
 			{
 
 				mode = WallFollowing;
