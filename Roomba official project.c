@@ -21,16 +21,17 @@ task main()
 			motor[right] = speedright;
 			motor[left] = speedleft;
 
-			wait1Msec(3000);
+			wait1Msec(1000);
 
 
 
-			speedleft = speedleft + 10;
-			speedright = speedright + 10;
+			speedleft = speedleft + 5;
+			speedright = speedright + 5;
 
 			if(speedleft == 100)
 			{
-				  clearTimer(T1);
+				  resetMotorEncoder(left);
+
 					mode = straight;
 
 			}
@@ -54,7 +55,7 @@ task main()
 			motor[right] = 50;
 
 
-				if (time1(T1) > 8000)
+				if (getMotorEncoder(left) > 3000)
 				{
 					speedright = 50;
 					speedleft = 0;
@@ -63,7 +64,7 @@ task main()
 
 			if(SensorValue(button2) ==1)
 			{
-
+				wfcount = 0;
 				mode = WallFollowing;
 			}
 
@@ -109,7 +110,7 @@ task main()
 					motor[right] = 0;
 					wait1Msec(1500);
 
-					clearTimer(T1);
+					resetMotorEncoder(left);
 
 					mode = straight;
 				}
