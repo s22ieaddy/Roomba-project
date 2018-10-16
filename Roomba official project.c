@@ -30,9 +30,8 @@ task main()
 
 			if(speedleft == 100)
 			{
-				  resetMotorEncoder(left);
-
-					mode = straight;
+			  resetMotorEncoder(left);
+				mode = straight;
 
 			}
 
@@ -44,23 +43,20 @@ task main()
 			}
 
 
-
-
 		}
 
 		if(mode == straight)
 		{
-
 			motor[left] = 50;
 			motor[right] = 50;
 
 
-				if (getMotorEncoder(left) > 3000)
-				{
-					speedright = 50;
-					speedleft = 0;
-					mode = spiral;
-				}
+			if (getMotorEncoder(left) > 4500)
+			{
+				speedright = 50;
+				speedleft = 0;
+				mode = spiral;
+			}
 
 			if(SensorValue(button2) ==1)
 			{
@@ -72,26 +68,23 @@ task main()
 
  		if(mode == WallFollowing)
  		{
-
-
 			 wfcount = wfcount + 1;
 
 
-
-	while(SensorValue(button2) ==0)
+		while(SensorValue(button2) ==0)
 			{
 				motor[left] = 50;
 				motor[right] = 50;
 
 			}
 
-			motor[left] = -50;
-			motor[right] = -50;
-			wait1Msec(1500);
+				motor[left] = -50;
+				motor[right] = -50;
+				wait1Msec(1500);
 
-			motor[left] = 0;
-			motor[right] = 75;
-			wait1Msec(750);
+				motor[left] = 0;
+				motor[right] = 75;
+				wait1Msec(750);
 
 			while(SensorValue(button2) ==0)
 			{
@@ -114,11 +107,6 @@ task main()
 
 					mode = straight;
 				}
-
-
-
-
-
 
 				}
 			}
